@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Температура в разных городах</h1>
+    <ul id="list">
+
+        <div id="maxTemp"></div>
+        <div id="minTemp"></div>
+
+        <script>
+            const cities = ['Dubai', 'Moscow', 'New-York'];
+            const temp = [];
+            for (let i = 0; i < cities.length; i++) {
+                let newTemp = prompt(`Введите температуру в городе ${cities[i]}`);
+                temp.push(Number(newTemp));
+            }
+            console.log(temp)
+
+            const task = document.getElementById(`list`)
+
+            function createList() {
+                for (let i = 0; i < cities.length; i++) {
+                    const tempValue = Number(temp);
+                    const newElement = document.createElement(`li`);
+                    newElement.textContent = (`Температура в городе ${cities[i]}: ${temp[i]}`);
+                    list.append(newElement);
+                }
+            }
+            createList();
+
+            const maxTemp = document.getElementById(`maxTemp`);
+
+            function maxTempCheck() {
+                const max = Math.max(...temp);
+                console.log(max);
+                maxTemp.textContent = (`Максимальная температура: ${max}`);
+            }
+            maxTempCheck();
+
+            const minTemp = document.getElementById(`minTemp`);
+
+            function minTempCheck() {
+                const min = Math.min(...temp);
+                console.log(min);
+                minTemp.textContent = (`Минимальная температура: ${min}`);
+            }
+            minTempCheck();
+
+        </script>
+</body>
+
+</html>
